@@ -11,7 +11,7 @@ import os
 import uvicorn
 
 load_dotenv()
-port = int(os.environ.get("PORT" , 8000))
+port = int(os.environ.get("PORT" , 10000))
 
 # Create an MCP server
 mcp = FastMCP("Demo")
