@@ -41,6 +41,37 @@ def get_greeting_test() -> str:
     """Get a personalized greeting"""
     return f"Hello, test!"
 
+# Add an employee details resource
+@mcp.resource("employees://details")
+def get_employee_details() -> dict:
+    """Get a list of sample employee details"""
+    employees = [
+        {
+            "id": 101,
+            "name": "Alice Johnson",
+            "role": "Software Engineer",
+            "department": "Engineering",
+            "email": "alice.johnson@example.com",
+            "location": "New York"
+        },
+        {
+            "id": 102,
+            "name": "Bob Smith",
+            "role": "QA Engineer",
+            "department": "Quality Assurance",
+            "email": "bob.smith@example.com",
+            "location": "San Francisco"
+        },
+        {
+            "id": 103,
+            "name": "Charlie Brown",
+            "role": "Product Manager",
+            "department": "Product",
+            "email": "charlie.brown@example.com",
+            "location": "London"
+        }
+    ]
+    return {"employees": employees}
 
 # Add a prompt
 @mcp.prompt()
