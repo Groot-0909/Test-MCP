@@ -41,7 +41,8 @@ def get_greeting_test() -> str:
     """Get a personalized greeting"""
     return f"Hello, test!"
 
-# Add an employee details resource
+
+# Add an employee details resource with 10 sample records
 @mcp.resource("employees://details")
 def get_employee_details() -> dict:
     """Get a list of sample employee details"""
@@ -69,9 +70,67 @@ def get_employee_details() -> dict:
             "department": "Product",
             "email": "charlie.brown@example.com",
             "location": "London"
+        },
+        {
+            "id": 104,
+            "name": "Diana Prince",
+            "role": "DevOps Engineer",
+            "department": "Infrastructure",
+            "email": "diana.prince@example.com",
+            "location": "Berlin"
+        },
+        {
+            "id": 105,
+            "name": "Ethan Hunt",
+            "role": "Security Analyst",
+            "department": "Cybersecurity",
+            "email": "ethan.hunt@example.com",
+            "location": "Singapore"
+        },
+        {
+            "id": 106,
+            "name": "Fiona Gallagher",
+            "role": "Data Scientist",
+            "department": "Data Analytics",
+            "email": "fiona.gallagher@example.com",
+            "location": "Toronto"
+        },
+        {
+            "id": 107,
+            "name": "George Miller",
+            "role": "UI/UX Designer",
+            "department": "Design",
+            "email": "george.miller@example.com",
+            "location": "Sydney"
+        },
+        {
+            "id": 108,
+            "name": "Hannah Lee",
+            "role": "Frontend Developer",
+            "department": "Engineering",
+            "email": "hannah.lee@example.com",
+            "location": "Tokyo"
+        },
+        {
+            "id": 109,
+            "name": "Ian Wright",
+            "role": "Backend Developer",
+            "department": "Engineering",
+            "email": "ian.wright@example.com",
+            "location": "Dublin"
+        },        
+        {
+            "id": 110,
+            "name": "Julia Roberts",
+            "role": "HR Manager",
+            "department": "Human Resources",
+            "email": "julia.roberts@example.com",
+            "location": "Amsterdam"
         }
     ]
     return {"employees": employees}
+
+
 
 # Add a prompt
 @mcp.prompt()
