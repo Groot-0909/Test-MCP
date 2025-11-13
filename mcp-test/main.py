@@ -26,22 +26,29 @@ mcp = FastMCP("Demo")
 def greet(name: str = "World") -> CreateMessageResult:
     """Greet someone and return structured result"""
     message = f"Hello {name}!"
-    return CreateMessageResult(
+    result = CreateMessageResult(
         role="assistant",
         content={"type": "text", "text": message},
         model="demo-model"
     )
+    print(result)
+    print(isinstance(result, CreateMessageResult))
+    return result
 
 
 @mcp.tool()
 def add(a: int, b: int) -> CreateMessageResult:
     """Add two numbers and return structured result"""
     result = a + b
-    return CreateMessageResult(
+    response = CreateMessageResult(
         role="assistant",
         content={"type": "text", "text": f"The sum of {a} and {b} is {result}."},
         model="demo-model"
     )
+    print(response)
+    print(isinstance(result, CreateMessageResult))
+    return response
+
 
 
 # -------------------------------------------------
