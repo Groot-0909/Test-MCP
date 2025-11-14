@@ -87,7 +87,7 @@ def get_employee_details() -> dict:
 # -------------------------------------------------
 
 @mcp.prompt()
-def greet_user(name: str, style: str = "friendly") -> GetPromptResult:
+def greet_user(name: str = "Jaden" , style: str = "friendly") -> GetPromptResult:
     """Generate a greeting prompt"""
     styles = {
         "friendly": "Please write a warm, friendly greeting",
@@ -110,6 +110,47 @@ def greet_user(name: str, style: str = "friendly") -> GetPromptResult:
         ],
         metadata={"style": style}
     )
+
+
+
+@mcp.prompt()
+def pii_pci_analyzer(text: str, category: str = "pii") -> GetPromptResult:
+    """
+    Generate a prompt to classify or detect sensitive information such as PII or PCI.
+    """
+
+    categories = {
+        "pii": "Identify whether the following text contains PII (Personally Identifiable Information). Examples include: name, email, phone number, address, government ID numbers, birthdate, etc.",
+        "pci": "Identify whether the following text contains PCI (Payment Card Information). Examples include: credit card number, CVV, expiration date, bank account numbers, etc.",
+        "phi": "Identify whether the following text contains PHI (Protected Health Information). Examples include: medical conditions, treatments, prescriptions, medical record numbers, etc.",
+    }
+
+    instruction = categories.get(category, categories["pii"])  # default to PII
+
+    prompt_text = (
+        f"{instruction}\n\n"
+        f"Text to analyze:\n{text}\n\n"
+        "Respond with:\n"
+        "- 'yes' if sensitive data is present\n"
+        "- 'no' if no sensitive data is present\n"
+        "- A brief explanation describing why"
+    )
+
+    return GetPromptResult(
+        description="A prompt for detecting sensitive data (PII/PCI/PHI).",
+        messages=[
+            {
+                "role": "user",
+                "content": {
+                    "type": "text",
+                    "text": prompt_text
+                }
+            }
+        ],
+        metadata={"category": category}
+    )
+
+
 
 
 # -------------------------------------------------
